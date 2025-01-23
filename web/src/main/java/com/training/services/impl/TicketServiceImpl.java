@@ -6,7 +6,6 @@ import com.training.models.Booking;
 import com.training.models.Passenger;
 import com.training.models.Ticket;
 import com.training.models.User;
-import com.training.payload.BookingDTO;
 import com.training.payload.TicketBookingDTO;
 import com.training.payload.TicketDTO;
 import com.training.repositories.BookingRepository;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 @Service
 public class TicketServiceImpl implements TicketService {
