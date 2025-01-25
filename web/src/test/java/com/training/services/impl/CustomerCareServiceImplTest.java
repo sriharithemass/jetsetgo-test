@@ -1,4 +1,4 @@
-package com.training.impl;
+package com.training.services.impl;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +9,6 @@ import com.training.models.CustomerCare;
 import com.training.models.User;
 import com.training.repositories.CustomerCareRepository;
 import com.training.repositories.UserRepository;
-import com.training.services.impl.CustomerCareServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

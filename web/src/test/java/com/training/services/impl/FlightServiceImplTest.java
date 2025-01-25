@@ -1,4 +1,4 @@
-package com.training.impl;
+package com.training.services.impl;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +7,6 @@ import com.training.config.AppConstants;
 import com.training.exception.APIException;
 import com.training.models.Flight;
 import com.training.repositories.FlightRepository;
-import com.training.services.impl.FlightServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

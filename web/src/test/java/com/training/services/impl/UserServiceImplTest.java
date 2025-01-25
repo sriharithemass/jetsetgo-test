@@ -1,4 +1,4 @@
-package com.training.impl;
+package com.training.services.impl;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +8,6 @@ import com.training.models.User;
 import com.training.payload.UserDTO;
 import com.training.repositories.RoleRepository;
 import com.training.repositories.UserRepository;
-import com.training.services.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

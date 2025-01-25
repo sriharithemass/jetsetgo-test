@@ -53,16 +53,13 @@ public class AuthServiceImpl {
     UserService userService;
 
 
-    public ResponseEntity<?> authenticateUser(LoginRequest loginRequest){
+    public LoginResponse authenticateUser(LoginRequest loginRequest){
         Authentication authentication;
         try {
             authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         } catch (AuthenticationException exception) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("message", "An error occurred while logging in,check your credentials");
-            map.put("status", false);
-            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+            throw new APIException(AppConstants.INVALID_CREDENTIALS);
         }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -78,16 +75,16 @@ public class AuthServiceImpl {
         LoginResponse response = new LoginResponse(userDetails.getUsername(),
                 roles, jwtToken);
 
-        return ResponseEntity.ok(response);
+        return response;
     }
 
-    public ResponseEntity<?> registerUser(SignupRequest signUpRequest){
+    public MessageResponse registerUser(SignupRequest signUpRequest){
         if (userRepository.existsByUserName(signUpRequest.getUsername())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+            throw new APIException("Error: Username is already taken!");
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+            throw new APIException("Error: Email is already in use!");
         }
 
         User user = new User(signUpRequest.getUsername(),
@@ -113,10 +110,10 @@ public class AuthServiceImpl {
         user.setRole(role);
         userRepository.save(user);
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+        return new MessageResponse("User registered successfully!");
     }
 
-    public ResponseEntity<?> getUserDetails(String username){
+    public UserInfoResponse getUserDetails(String username){
         User user = userService.findByUsername(username);
 
         UserInfoResponse response = new UserInfoResponse(
@@ -126,7 +123,7 @@ public class AuthServiceImpl {
                 user.getRole().getRoleName().toString()
         );
 
-        return ResponseEntity.ok().body(response);
+        return response;
     }
 
     public String currentUserName(String username){

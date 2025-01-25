@@ -1,4 +1,4 @@
-package com.training.impl;
+package com.training.services.impl;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,17 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.training.config.AppConstants;
 import com.training.exception.APIException;
 import com.training.models.Booking;
-import com.training.models.Passenger;
 import com.training.models.Ticket;
 import com.training.models.User;
-import com.training.payload.TicketBookingDTO;
 import com.training.payload.TicketDTO;
 import com.training.repositories.BookingRepository;
 import com.training.repositories.PassengerRepository;
 import com.training.repositories.TicketRepository;
 import com.training.repositories.UserRepository;
-import com.training.services.impl.BookingServiceImpl;
-import com.training.services.impl.TicketServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +25,6 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class TicketServiceImplTest {

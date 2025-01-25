@@ -5,6 +5,9 @@ import com.training.repositories.UserRepository;
 import com.training.security.jwt.JwtUtils;
 import com.training.security.request.LoginRequest;
 import com.training.security.request.SignupRequest;
+import com.training.security.response.LoginResponse;
+import com.training.security.response.MessageResponse;
+import com.training.security.response.UserInfoResponse;
 import com.training.services.UserService;
 import com.training.services.impl.AuthServiceImpl;
 import jakarta.validation.Valid;
@@ -41,22 +44,26 @@ public class AuthController {
     UserService userService;
 
     @PostMapping("/public/signin")
-    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-        return authService.authenticateUser(loginRequest);
+    public ResponseEntity<LoginResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
+        LoginResponse loginResponse = authService.authenticateUser(loginRequest);
+        return ResponseEntity.ok(loginResponse);
     }
 
     @PostMapping("/public/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        return authService.registerUser(signUpRequest);
+    public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        MessageResponse response = authService.registerUser(signUpRequest);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/user")
-    public ResponseEntity<?> getUserDetails(@RequestHeader("username") String username) {
-        return authService.getUserDetails(username);
+    public ResponseEntity<UserInfoResponse> getUserDetails(@RequestHeader("username") String username) {
+        UserInfoResponse response = authService.getUserDetails(username);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/username")
-    public String currentUserName(@RequestHeader("username") String username) {
-        return authService.currentUserName(username);
+    public ResponseEntity<String> currentUserName(@RequestHeader("username") String username) {
+        String response = authService.currentUserName(username);
+        return ResponseEntity.ok(response);
     }
 }

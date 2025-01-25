@@ -1,4 +1,4 @@
-package com.training.impl;
+package com.training.services.impl;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,11 +7,7 @@ import com.training.config.AppConstants;
 import com.training.exception.APIException;
 import com.training.models.Booking;
 import com.training.models.Flight;
-import com.training.payload.BookingDTO;
-import com.training.payload.BookingResponse;
 import com.training.repositories.BookingRepository;
-import com.training.services.impl.BookingServiceImpl;
-import com.training.services.impl.FlightServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,12 +20,9 @@ import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-public class BookingServiceImplTest {
+class BookingServiceImplTest {
 
     @InjectMocks
     private BookingServiceImpl bookingService;

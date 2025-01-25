@@ -12,4 +12,5 @@ public class AppConstants {
     public static final String BOOKING_OPEN = "Bookings Open";
     public static final String BOOKING_FILLING_FAST = "Filling Fast";
     public static final String BOOKING_CLOSED = "Bookings Closed";
+    public static final String INVALID_CREDENTIALS = "An error occurred while logging in,check your credentials";
 }
